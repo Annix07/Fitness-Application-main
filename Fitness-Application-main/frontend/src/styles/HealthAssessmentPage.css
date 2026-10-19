@@ -1,0 +1,580 @@
+.health-page-container {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+}
+
+.health-content {
+  flex: 1;
+  margin-left: 250px;
+  min-height: 100vh;
+  padding: 96px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+}
+
+/* ── Top Header ── */
+.health-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.health-header-left h1 {
+  font-family: var(--font-display, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.health-header-left p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.btn-apply-targets {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #0284c7;
+  border: none;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-apply-targets:hover {
+  background: #0369a1;
+}
+
+/* ── 2-Column Responsive Layout ── */
+.health-grid-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ── Form Card (Left Column) ── */
+.health-form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.health-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.health-card-header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.health-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.health-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* Gender Toggle */
+.gender-toggle-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: #f8fafc;
+  padding: 3px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.gender-btn {
+  padding: 7px 8px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+}
+
+.gender-btn:hover {
+  color: #0f172a;
+}
+
+.gender-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+/* Inputs Grid (Age, Height, Weight) */
+.health-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.input-with-unit {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-unit input {
+  width: 100%;
+  padding: 8px 30px 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.88rem;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input-with-unit input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+}
+
+.unit-tag {
+  position: absolute;
+  right: 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+/* Select Field */
+.health-select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.85rem;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+
+.health-select:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+}
+
+/* Goals Selection List */
+.goals-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.goal-card-item {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.goal-card-item:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.goal-card-item.active {
+  border-color: #0284c7;
+  background: #f0f9ff;
+}
+
+.goal-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.goal-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.goal-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.goal-delta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.goal-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.goal-check-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.goal-check-circle.checked {
+  background: #0284c7;
+  border-color: #0284c7;
+}
+
+/* ── Results Column (Right Side) ── */
+.health-results-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 1. Primary Target Summary Card */
+.health-summary-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.health-summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.summary-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-lbl {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.summary-target-val {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.cals-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.cals-unit {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.summary-goal-badge {
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0284c7;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 2px 8px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.summary-right {
+  display: flex;
+  align-items: center;
+}
+
+.bmi-badge-box {
+  background: #ffffff;
+  border: 1.5px solid #10b981;
+  border-radius: 10px;
+  padding: 10px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 140px;
+}
+
+.bmi-val {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.bmi-cat {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.ideal-weight-notice {
+  font-size: 0.8rem;
+  color: #475569;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.ideal-weight-notice strong {
+  color: #0f172a;
+}
+
+/* 2. Macro Breakdown Card (Matching Diet Tracker Progress Meters) */
+.health-macro-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.health-macro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.macro-meter-box {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.macro-meter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.macro-meter-name {
+  font-weight: 700;
+  color: #334155;
+}
+
+.macro-meter-share {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.macro-meter-val {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.macro-meter-val strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.macro-meter-val span {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.macro-meter-track {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.macro-meter-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+.macro-meter-fill.protein {
+  background: #0284c7;
+}
+
+.macro-meter-fill.carbs {
+  background: #3b82f6;
+}
+
+.macro-meter-fill.fat {
+  background: #f97316;
+}
+
+.macro-sub-info {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+/* 3. Core Metabolic Metrics Card */
+.health-metrics-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.health-metabolic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.metabolic-item {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metabolic-lbl {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.metabolic-val {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.metabolic-sub {
+  font-size: 0.68rem;
+  color: #94a3b8;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2100;
+  animation: simpleFadeIn 0.2s ease;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .health-content {
+    margin-left: 0;
+    padding: 80px 20px 60px;
+  }
+
+  .health-grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .health-metabolic-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .health-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .health-macro-grid {
+    grid-template-columns: 1fr;
+  }
+}

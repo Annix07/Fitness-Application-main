@@ -1,0 +1,223 @@
+/* ============================================
+   SIMPLE & USER-FRIENDLY ADD EXERCISE MODAL
+   Matches Clean Diet Tracker Modal Architecture
+============================================ */
+
+.exercise-modal-box {
+  max-width: 540px;
+}
+
+/* Muscle Group Filter Pills */
+.simple-muscle-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  background: #f8fafc;
+  padding: 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.simple-muscle-pill {
+  flex: 1 1 auto;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  min-width: 50px;
+}
+
+.simple-muscle-pill:hover {
+  color: #0f172a;
+}
+
+.simple-muscle-pill.active {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+/* Dropdown Option Elements */
+.simple-ex-opt-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.simple-opt-sub {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.simple-dropdown-option.highlighted .simple-opt-sub {
+  color: #38bdf8;
+}
+
+/* Multi-Exercise Staged Item Rows */
+.simple-exercise-staged-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  gap: 10px;
+}
+
+.staged-ex-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.staged-ex-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.staged-ex-meta {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.staged-ex-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.staged-stepper-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stepper-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.03em;
+}
+
+/* Edit Mode Sets Table */
+.edit-sets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.edit-sets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-sets-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.btn-add-set-small {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0284c7;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 4px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+
+.btn-add-set-small:hover {
+  background: #e0f2fe;
+}
+
+.edit-sets-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.edit-sets-thead {
+  display: grid;
+  grid-template-columns: 45px 1fr 1fr 40px;
+  gap: 6px;
+  padding: 4px 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.edit-sets-tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.edit-sets-row {
+  display: grid;
+  grid-template-columns: 45px 1fr 1fr 40px;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.edit-set-num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  text-align: center;
+}
+
+.edit-set-input {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 0.82rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  text-align: center;
+  color: #0f172a;
+}
+
+.edit-set-input:focus {
+  border-color: #0284c7;
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  .simple-muscle-pills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .staged-ex-controls {
+    gap: 4px;
+  }
+}

@@ -1,0 +1,672 @@
+/* ============================================
+   WORKOUT & EXERCISE TRACKER - CLEAN & USER-FRIENDLY
+   Predefined daily routine with inline set/weight controls
+============================================ */
+
+.workout-page-container {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+}
+
+.workout-content {
+  flex: 1;
+  margin-left: 250px;
+  min-height: 100vh;
+  padding: 96px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+}
+
+/* ── Top Header & Date Navigation ── */
+.workout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.workout-header-left h1 {
+  font-family: var(--font-display, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.workout-header-left p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.workout-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Date Navigator */
+.workout-date-nav {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 3px 6px;
+  gap: 6px;
+}
+
+.workout-date-nav-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.15s ease;
+}
+
+.workout-date-nav-btn:hover {
+  background: #e2e8f0;
+  color: #0284c7;
+}
+
+.workout-date-picker-field {
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-today-quick {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  color: #0284c7;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-today-quick:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.btn-start-workout-master {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #16a34a;
+  border: none;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-start-workout-master:hover {
+  background: #15803d;
+}
+
+.btn-mark-complete {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-mark-complete.completed {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.btn-mark-complete:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+/* ── Workout Routine Summary Card ── */
+.workout-summary-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.workout-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.workout-routine-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.workout-routine-sub {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+}
+
+.workout-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.workout-status-badge.completed {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.workout-status-badge.in-progress {
+  background: #f0f9ff;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+
+/* Progress Strip */
+.workout-progress-strip {
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-progress-track {
+  height: 8px;
+  background: #f1f5f9;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.workout-progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+/* 4 Metric Boxes Grid */
+.workout-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.workout-metric-item {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.metric-title {
+  font-weight: 600;
+  color: #475569;
+}
+
+.metric-vals {
+  color: #64748b;
+}
+
+.metric-vals strong {
+  color: #0f172a;
+}
+
+.metric-bar-track {
+  height: 5px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.metric-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+.metric-bar-fill.blue {
+  background: #0284c7;
+}
+
+.metric-bar-fill.sky {
+  background: #3b82f6;
+}
+
+.metric-bar-fill.purple {
+  background: #8b5cf6;
+}
+
+.metric-bar-fill.orange {
+  background: #f97316;
+}
+
+/* ── Exercises Section Panel ── */
+.workout-exercises-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.exercises-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.panel-header-left h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.panel-header-left p {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 2px 0 0;
+}
+
+.btn-reset-routine {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-reset-routine:hover {
+  background: #f1f5f9;
+  color: #0284c7;
+  border-color: #0284c7;
+}
+
+/* Exercises List */
+.workout-exercises-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exercise-row-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: all 0.15s ease;
+}
+
+.exercise-row-card.completed {
+  background: #fafafa;
+  border-color: #e2e8f0;
+}
+
+.exercise-row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* 1-Click Check Circle */
+.btn-check-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.btn-check-circle:hover {
+  border-color: #16a34a;
+  color: #16a34a;
+}
+
+.btn-check-circle.checked {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+
+.exercise-icon-box {
+  width: 34px;
+  height: 34px;
+  background: #f0f9ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.exercise-row-card.completed .exercise-icon-box {
+  background: #f0fdf4;
+}
+
+.exercise-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.exercise-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.exercise-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.muscle-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #f0f9ff;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+  text-transform: capitalize;
+}
+
+.done-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #166534;
+  background: #dcfce7;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ── Inline Stepper Controls for Sets, Reps, Weight ── */
+.exercise-inline-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.inline-control-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
+.control-lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.control-val {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+  min-width: 24px;
+  text-align: center;
+}
+
+.btn-inline-step {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  line-height: 1;
+}
+
+.btn-inline-step:hover:not(:disabled) {
+  background: #e2e8f0;
+  color: #0284c7;
+  border-color: #0284c7;
+}
+
+.btn-inline-step:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Exercise Row Right Side ── */
+.exercise-row-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.exercise-volume-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.volume-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.volume-time {
+  font-size: 0.74rem;
+  color: #64748b;
+}
+
+.btn-start-single {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #16a34a;
+  background: #f0fdf4;
+  color: #166534;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-start-single:hover {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-start-single.done {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #64748b;
+}
+
+
+/* ── Empty State ── */
+.workout-empty-card {
+  text-align: center;
+  padding: 40px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.workout-empty-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.workout-empty-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.workout-empty-card p {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.empty-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-reset-routine-primary {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #0284c7;
+  border: none;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-reset-routine-primary:hover {
+  background: #0369a1;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .workout-content {
+    margin-left: 0;
+    padding: 80px 20px 60px;
+  }
+
+  .workout-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .workout-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .workout-header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .exercise-row-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exercise-row-right {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+  }
+}

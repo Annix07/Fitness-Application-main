@@ -1,0 +1,525 @@
+/* ============================================
+   ACTIVE WORKOUT & TIMER MODAL - CLEAN & USER-FRIENDLY
+   15s Set Breaks, 30s Exercise Breaks & Live Timers
+============================================ */
+
+.simple-timer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: simpleFadeIn 0.15s ease;
+}
+
+.simple-timer-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  animation: simpleSlideIn 0.15s ease-out;
+}
+
+@keyframes simpleFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes simpleSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.simple-timer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.simple-timer-step {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+.simple-timer-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.simple-timer-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* Body */
+.simple-timer-body {
+  padding: 18px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Exercise Details */
+.simple-ex-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.simple-ex-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.simple-tag-muscle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f0f9ff;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+  text-transform: capitalize;
+}
+
+.simple-tag-equip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.simple-ex-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 2px 0 0;
+}
+
+.simple-ex-desc {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 2px 0 0;
+  line-height: 1.4;
+  background: #f8fafc;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #f1f5f9;
+}
+
+.simple-tag-completed-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.next-exercise-preview-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #fefce8;
+  border: 1.5px solid #fde047;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.next-preview-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #854d0e;
+}
+
+.next-preview-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #713f12;
+}
+
+.next-preview-meta {
+  font-size: 0.75rem;
+  color: #a16207;
+}
+
+/* Set Progression Pills */
+.simple-set-tracker-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.simple-set-chip {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.simple-set-chip.active {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 1px #0284c7;
+}
+
+.simple-set-chip.done {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.chip-set-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.simple-set-chip.active .chip-set-title {
+  color: #0284c7;
+}
+
+.simple-set-chip.done .chip-set-title {
+  color: #166534;
+}
+
+.chip-set-sub {
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
+.chip-check {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Prominent Clean Timer Box ── */
+.simple-timer-display-box {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.simple-timer-display-box.work {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+.simple-timer-display-box.set_rest {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.simple-timer-display-box.exercise_rest {
+  background: #fefce8;
+  border-color: #fef08a;
+}
+
+.timer-phase-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.simple-timer-display-box.work .timer-phase-tag {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.simple-timer-display-box.set_rest .timer-phase-tag {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.simple-timer-display-box.exercise_rest .timer-phase-tag {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.timer-large-digits {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.simple-timer-display-box.work .timer-large-digits {
+  color: #0284c7;
+}
+
+.simple-timer-display-box.set_rest .timer-large-digits {
+  color: #16a34a;
+}
+
+.simple-timer-display-box.exercise_rest .timer-large-digits {
+  color: #ca8a04;
+}
+
+.timer-sub-target {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.timer-sub-target strong {
+  color: #0f172a;
+}
+
+/* Timer Control Buttons */
+.timer-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn-timer-ctrl {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-timer-ctrl:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.btn-timer-play {
+  padding: 8px 24px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-timer-play.running {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.btn-timer-play.running:hover {
+  background: #0369a1;
+}
+
+.btn-timer-play.paused {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-timer-play.paused:hover {
+  background: #15803d;
+}
+
+/* Action Buttons */
+.timer-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-timer-main-action {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-timer-main-action.finish {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-timer-main-action.finish:hover {
+  background: #15803d;
+}
+
+.btn-timer-main-action.skip {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.btn-timer-main-action.skip:hover {
+  background: #0369a1;
+}
+
+.btn-timer-main-action.next {
+  background: #eab308;
+  color: #713f12;
+}
+
+.btn-timer-main-action.next:hover {
+  background: #ca8a04;
+  color: #ffffff;
+}
+
+.btn-skip-ex-link {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-skip-ex-link:hover {
+  color: #0f172a;
+  text-decoration: underline;
+}
+
+/* Done View */
+.simple-done-view {
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.simple-done-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f0fdf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-done-view h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.simple-done-view p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.simple-done-stats {
+  display: flex;
+  gap: 16px;
+  margin: 8px 0;
+}
+
+.simple-done-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.simple-done-stat strong {
+  font-size: 1.25rem;
+  color: #0284c7;
+}
+
+.simple-done-stat span {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.simple-btn-finish {
+  padding: 9px 24px;
+  border-radius: 8px;
+  background: #0284c7;
+  border: none;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.simple-btn-finish:hover {
+  background: #0369a1;
+}
